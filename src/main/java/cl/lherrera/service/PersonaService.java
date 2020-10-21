@@ -14,11 +14,27 @@ public class PersonaService {
 	@Autowired
 	PersonaRepository repo;
 	
-	public List<Persona> ListarPersonas() {
+	public List<Persona> listarPersonas() {
 		return repo.findAll();
 	}
 	
 	public void ingresarPersona(Persona persona) {
 		repo.save(persona);
 	}
+	
+	public Persona completarPersona(Persona persona) {
+		return repo.findByNombreAndCorreo(persona.getNombre(), persona.getCorreo());
+		
+	}
+	
+	public Persona encontrarPorId(String id) {
+		return repo.findById(id).orElse(null);
+	}
+	
+	public Persona eliminarPersona(Persona persona) {
+		repo.delete(persona);
+
+		return persona;
+	}
 }
+

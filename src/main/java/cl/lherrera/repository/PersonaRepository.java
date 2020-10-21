@@ -5,5 +5,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import cl.lherrera.model.Persona;
 
 public interface PersonaRepository extends MongoRepository<Persona, String> {
+	
+	Persona findByNombreAndCorreo(String nombre, String correo);
 
 }
