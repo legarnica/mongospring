@@ -2,40 +2,44 @@ package cl.lherrera.dto;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import org.springframework.stereotype.Component;
 
-@Component
-public class AbstractDto<T> implements Serializable {
+public class AbstractDto<T, O> implements Serializable {
 
 	private static final long serialVersionUID = -2468811679876395830L;
 
 	private Integer statusCode;
-	private List<T> data = new ArrayList<>();
+	private T data;
+	private O auxData;
 	private String menssaje;
 
-	public AbstractDto(Integer statusCode, List<T> data, String menssaje) {
+	public AbstractDto(Integer statusCode, T data, O auxData, String menssaje) {
 		super();
 		this.statusCode = statusCode;
 		this.data = data;
+		this.auxData = auxData;
 		this.menssaje = menssaje;
 	}
 
+	public AbstractDto() {
+	}
+	
 	/**
-	 * se controla la serjialización de los tipo T de data.
+	 * se controla la serjialización de los tipo T, O
 	 */
 	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
 	}
 
 	/**
-	 * se controla la serjialización de los tipo T de data.
+	 * se controla la serjialización de los tipo T, O
 	 */
 	private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
 	}
 
-	public AbstractDto() {
+	@Override
+	public String toString() {
+		return "AbstractDto [statusCode=" + statusCode + ", data=" + data + ", auxData=" + auxData + ", menssaje="
+				+ menssaje + "]";
 	}
 
 	public Integer getStatusCode() {
@@ -46,12 +50,20 @@ public class AbstractDto<T> implements Serializable {
 		this.statusCode = statusCode;
 	}
 
-	public List<T> getData() {
+	public T getData() {
 		return data;
 	}
 
-	public void setData(List<T> data) {
+	public void setData(T data) {
 		this.data = data;
+	}
+
+	public O getAuxData() {
+		return auxData;
+	}
+
+	public void setAuxData(O auxData) {
+		this.auxData = auxData;
 	}
 
 	public String getMenssaje() {
