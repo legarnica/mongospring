@@ -3,14 +3,13 @@ package cl.lherrera.dto;
 import java.io.IOException;
 import java.io.Serializable;
 
-
 public class AbstractDto<T, O> implements Serializable {
 
 	private static final long serialVersionUID = -2468811679876395830L;
 
 	private Integer statusCode;
-	private T data;
 	private O auxData;
+	private T data;
 	private String menssaje;
 
 	public AbstractDto(Integer statusCode, T data, O auxData, String menssaje) {
@@ -23,7 +22,7 @@ public class AbstractDto<T, O> implements Serializable {
 
 	public AbstractDto() {
 	}
-	
+
 	/**
 	 * se controla la serjialización de los tipo T, O
 	 */
