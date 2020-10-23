@@ -1,5 +1,11 @@
 package cl.lherrera.service;
 
+import static cl.lherrera.dto.AbstractDto.DELETE_CODE;
+import static cl.lherrera.dto.AbstractDto.DELETE_MSJ;
+import static cl.lherrera.dto.AbstractDto.OK_CODE;
+import static cl.lherrera.dto.AbstractDto.SAVE_CODE;
+import static cl.lherrera.dto.AbstractDto.SAVE_MSJ;
+
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +22,16 @@ public class UsuarioService {
 	private UsuarioRepository usuarioRepository;
 
 	public UsuarioDto usuarios() {
-		return new UsuarioDto(200, usuarioRepository.findAll(), null, "");
+		return new UsuarioDto(OK_CODE, usuarioRepository.findAll(), null, "");
 	}
 
 	public UsuarioDto registrarActualizar(Usuario usuario) {
-		return new UsuarioDto(201, new ArrayList<>(), usuarioRepository.save(usuario), "");
+		return new UsuarioDto(SAVE_CODE, new ArrayList<>(), usuarioRepository.save(usuario), SAVE_MSJ);
 	}
 
 	public UsuarioDto eliminar(Usuario usuario) {
 		usuarioRepository.delete(usuario);
-		return new UsuarioDto(202, new ArrayList<>(), usuario, "");
+		return new UsuarioDto(DELETE_CODE, new ArrayList<>(), usuario, DELETE_MSJ);
 	}
 
 	public Usuario obtener(String id) {

@@ -7,6 +7,13 @@ public class AbstractDto<T, O> implements Serializable {
 
 	private static final long serialVersionUID = -2468811679876395830L;
 
+	public static final String SAVE_MSJ = "Ingresado o actualizado";
+	public static final String DELETE_MSJ = "Eliminado";
+
+	public static final Integer SAVE_CODE = 201;
+	public static final Integer DELETE_CODE = 202;
+	public static final Integer OK_CODE = 200;
+
 	private Integer statusCode;
 	private O auxData;
 	private T data;

@@ -1,13 +1,16 @@
 package cl.lherrera.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Canasta implements Serializable {
-	
+
 	private static final long serialVersionUID = -243556683813488458L;
 
 	@Id
@@ -18,15 +21,20 @@ public class Canasta implements Serializable {
 	private String detalle;
 	private String urlImg;
 
-	public Canasta(String id, String nombre, String precio, String detalle, String url_img) {
+	@DBRef
+	private Set<Producto> productos = new HashSet<>();
+
+	public Canasta() {
+	}
+
+	public Canasta(String id, String nombre, String precio, String detalle, String urlImg, Set<Producto> productos) {
+		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.detalle = detalle;
-		this.urlImg = url_img;
-	}
-
-	public Canasta() {
+		this.urlImg = urlImg;
+		this.productos = productos;
 	}
 
 	public String getId() {
@@ -69,10 +77,18 @@ public class Canasta implements Serializable {
 		this.urlImg = urlImg;
 	}
 
+	public Set<Producto> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(Set<Producto> productos) {
+		this.productos = productos;
+	}
+
 	@Override
 	public String toString() {
 		return "Canasta [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", detalle=" + detalle + ", urlImg="
-				+ urlImg + "]";
+				+ urlImg + ", productos=" + productos + "]";
 	}
 
 }

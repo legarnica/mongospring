@@ -1,5 +1,8 @@
 package cl.lherrera.repository;
 
-public interface CanastaRepository {
+import org.springframework.data.mongodb.repository.MongoRepository;
 
+import cl.lherrera.model.Canasta;
+
+public interface CanastaRepository extends MongoRepository<Canasta, String> {
 }
