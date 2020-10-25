@@ -17,7 +17,7 @@ public class ProductoService {
 	private ProductoRepository productoRepository;
 
 	public ProductoDto productos() {
-		return new ProductoDto(OK_CODE, productoRepository.findAll(), null, "");
+		return new ProductoDto(OK_CODE, productoRepository.findAll(), null, null);
 	}
 
 	public ProductoDto registrarActualizar(Producto producto) {
@@ -26,7 +26,7 @@ public class ProductoService {
 
 	public ProductoDto eliminar(Producto producto) {
 		productoRepository.delete(producto);
-		return new ProductoDto(DELETE_CODE, new ArrayList<>(), productoRepository.save(producto), DELETE_MSJ);
+		return new ProductoDto(DELETE_CODE, new ArrayList<>(), producto, DELETE_MSJ);
 	}
 
 	public Producto obtener(String id) {

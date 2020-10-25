@@ -3,6 +3,7 @@ package cl.lherrera.service;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cl.lherrera.dto.CanastaDto;
 import cl.lherrera.model.Canasta;
@@ -10,6 +11,7 @@ import cl.lherrera.repository.CanastaRepository;
 
 import static cl.lherrera.dto.AbstractDto.*;
 
+@Service
 public class CanastaService {
 
 	@Autowired
